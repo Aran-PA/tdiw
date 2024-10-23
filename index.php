@@ -9,15 +9,7 @@
     </head>
     <body>
         <?php
-		include_once __DIR__ . "/connectaBD.php";  
-		$connexio = connectaBD();
-		$sql_graus = "SELECT id,nom FROM graus";
-		$consulta_graus = pg_query($connexio, $sql_graus) or die("Error sql graus");
-		$resultat_graus = pg_fetch_all($consulta_graus);
-		$sql_mencions = "SELECT id,nom FROM mencions WHERE grau=1";
-      	$consulta_mencions = pg_query($connexio, $sql_mencions) or die("Error sql mencions");
-		$resultat_mencions = pg_fetch_all($consulta_mencions);
-      	pg_close($connexio);
+
         ?>
         <div id="layout">
             <!-- SECCIÓ 1 - Capçalera -->
@@ -59,17 +51,13 @@
                         Grau:
                         <select name="grau" id="graus">
                         <?php
-                            foreach($resultat_graus as $fila){
-                                echo "<option value='" . $fila['id'] . "'>" . $fila['nom'] . "</option>\n";
-                            }
+                            include_once __DIR__."/controladors/graus.php";
                         ?>
                         </select>
                         <p>Tria la menció que t'atreu més:<p>
                         <select name="mencio" id="mencions">
                         <?php
-                                foreach($resultat_mencions as $fila){
-                                    echo "<option value='" . $fila['id'] . "'>" . $fila['nom'] . "</option>\n";
-                                }
+                            
                         ?>
                         </select>
                         <br /><br />

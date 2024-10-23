@@ -7,7 +7,7 @@ function confirmaRegistre(){
 
 async function carregaMencions(){
     var tagGraus = document.getElementById("graus");
-    var resposta = await fetch("COMPLETA!!!/mencions.php?grau="+tagGraus.value);
+    var resposta = await fetch("/mencions.php?grau="+tagGraus.value);
     var respostaTxt = await resposta.text();
     document.getElementById("mencions").innerHTML = respostaTxt;
 }
